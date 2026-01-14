@@ -325,6 +325,10 @@ static void print_gradient_line(
 }
 
 static void print_ascii_banner(std::ostream &os) {
+    const bool show_banner = false;
+    if (!show_banner) {
+        return;
+    }
     bool use_color = use_color_for_stream(os);
     const std::vector<const char *> gradient = {
         kColorSky, kColorLavender, kColorPurple, kColorPink, kColorPeach
