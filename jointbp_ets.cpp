@@ -4523,7 +4523,7 @@ static void report_progress(
     });
     append_lines({
         {"FER", format_double_fixed(fer, 6)},
-        {"elapsed_s", format_double_fixed(elapsed_sec, 2)},
+        {"elapsed_s", format_double_fixed(elapsed_sec, 2) + "s"},
         {"latency", format_latency(avg_latency_sec)}
     });
     append_lines({
@@ -4959,6 +4959,7 @@ int main(int argc, char **argv) {
         {"J", std::to_string(params.J)},
         {"L", std::to_string(params.L)},
         {"L2", std::to_string(params.L2)},
+        {"p", format_double_fixed(p_err, 6)},
         {"n", std::to_string(nvars)},
         {"mx", std::to_string(mx)},
         {"mz", std::to_string(mz)},
@@ -6088,7 +6089,7 @@ int main(int argc, char **argv) {
               << " avg_iter=" << std::setprecision(2) << std::fixed << avg_iter
               << " avg_latency=" << format_latency(avg_latency_sec)
               << " exact_rate=" << std::setprecision(6) << std::fixed << exact_rate
-              << " elapsed_s=" << std::setprecision(2) << std::fixed << elapsed
+              << " elapsed_s=" << std::setprecision(2) << std::fixed << elapsed << "s"
               << "\n";
     return 0;
 }
