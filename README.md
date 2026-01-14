@@ -41,13 +41,16 @@ Decode from a known error:
 
 ## Example output (abridged)
 
-Captured with:
+Run command:
 
 ```sh
 ./jointbp_ets \
   --params H_P768_J3_L12_dmax3_nc0-3_1-2_seed11579811919164041.txt \
-  --simulate --p 0.05 --trials 2 --max-iter 10 --report-every 2
+  --simulate --p 0.04000000 --trials 1000000 --max-iter 1000 \
+  --flip-hist 5 --damping 0.000000 --report-every 20
 ```
+
+Output excerpt (startup only; progress and summary omitted):
 
 ```text
 JJJJJ  OOO  III  N   N TTTTT BBBB  PPPP      EEEE TTTTT SSSS
@@ -73,32 +76,29 @@ gi=[(289,496) (257,640) (625,200) (41,524) (193,672) (449,672)]
 +------------------------------------------------------------------------+
 | Code Summary                                                           |
 +------------------------------------------------------------------------+
-P=768  J=3  L=12  L2=6  p=0.050000  n=9216  mx=2304  mz=2304
+P=768  J=3  L=12  L2=6  p=0.040000  n=9216  mx=2304  mz=2304
 rank_x=2302  rank_z=2302  stab_rank=4604  k=4612  rate=0.500434
 X: edges=27648  var_deg=3/3.00/3  check_deg=12/12.00/12
 Z: edges=27648  var_deg=3/3.00/3  check_deg=12/12.00/12
 
-...
++------------------------------------------------------------------------+
+| Graph Checks                                                           |
++------------------------------------------------------------------------+
+hx_hz_orthogonal=true  hx_hz_odd_pairs=0  girth_x=8  girth_z=8
 
 +------------------------------------------------------------------------+
-| PROGRESS                                                               |
+| ETS Load                                                               |
 +------------------------------------------------------------------------+
-|trials      =        2 failures    =        2 bp_fail     =        2    |
-|FER         = 1.000000 elapsed_s   =    0.02s latency     =   11.1ms    |
-|fps         =    89.47 qbps        =     413k avg_iter    =    10.00    |
-|iters       =       20 stab_success=        0 pp_success  =        0    |
-|pp_rate     =   0.0000 pp_ets      =        0 pp_flip     =        0    |
-|pp_osd      =        0 ets_used    =        0 ets_rate    =   0.0000    |
-|ets6        =        0 ets8        =        0 ets8p4      =        0    |
-|ets10       =        0 ets12       =        0 ets14       =        0    |
-|ets16       =        0 ets18       =        0 ets20       =        0    |
-|ets22       =        0                                                  |
-+------------------------------------------------------------------------+
-
-+------------------------------------------------------------------------+
-| Run Summary                                                            |
-+------------------------------------------------------------------------+
-trials=2 failures=2 bp_fail=2 pp_success=0 flip_pp_success=0 stab_success=0 ets_used=0 ets_saved=0 ets6_used=0 ets6_saved=0 ets12_used=0 ets12_saved=0 fer=1.00000000 ci95=[0.34237195,1.00000000] iters=20 avg_iter=10.00 avg_latency=11.1ms exact_rate=0.000000 elapsed_s=0.02s
+ETS6:   X=48 Z=16 status=ok   
+ETS8:   X= 0 Z=64 status=ok   
+ETS8p4: X=48 Z= 0 status=ok   
+ETS10:  X= 0 Z= 0 status=empty
+ETS12:  X=23 Z= 0 status=ok   
+ETS14:  X= 0 Z= 0 status=empty
+ETS16:  X= 3 Z= 0 status=ok   
+ETS18:  X=48 Z= 0 status=ok   
+ETS20:  X= 0 Z= 7 status=ok   
+ETS22:  X= 0 Z= 0 status=empty
 ```
 
 ## Input modes
