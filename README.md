@@ -21,6 +21,61 @@ c++ -O2 -std=c++17 -o jointbp_ets jointbp_ets.cpp
   --simulate --p 0.05 --trials 1000 --max-iter 50
 ```
 
+## Examples
+
+Decode from syndrome files:
+
+```sh
+./jointbp_ets \
+  --params H_P768_J3_L12_dmax3_nc0-3_1-2_seed11579811919164041.txt \
+  --sx sx.txt --sz sz.txt
+```
+
+Decode from a known error:
+
+```sh
+./jointbp_ets \
+  --params H_P768_J3_L12_dmax3_nc0-3_1-2_seed11579811919164041.txt \
+  --err err.txt
+```
+
+## Example output (abridged)
+
+```text
+JJJJJ  OOO  III  N   N TTTTT BBBB  PPPP      EEEE TTTTT SSSS
+...
+AI Report: JointBP ETS
+
++------------------------------------------------------------+
+| Input                                                      |
++------------------------------------------------------------+
+params_path=H_P768_J3_L12_dmax3_nc0-3_1-2_seed11579811919164041.txt
+fi=[(...)]
+gi=[(...)]
+
++------------------------------------------------------------+
+| Code Summary                                               |
++------------------------------------------------------------+
+P=768
+J=3
+L=12
+L2=6
+p=0.050000
+n=...
+
++------------------------------------------------------------+
+| PROGRESS                                                   |
++------------------------------------------------------------+
+trials=1000 failures=... bp_fail=...
+FER=... elapsed_s=...s latency=...
+iters=... pp_success=... ets_used=...
+
++------------------------------------------------------------+
+| Run Summary                                                |
++------------------------------------------------------------+
+trials=1000 failures=... fer=... iters=... avg_iter=... elapsed_s=...s
+```
+
 ## Input modes
 
 - `--simulate`: random trials.
