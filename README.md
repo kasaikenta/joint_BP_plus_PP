@@ -2,6 +2,23 @@
 
 C++ implementation of a joint BP decoder with ETS/flip post-processing.
 
+## Paper demo
+
+This repository is a demo of the code construction and decoder proposed in:
+https://arxiv.org/abs/2601.08824
+
+Code construction (paper summary):
+- Uses permutation matrices with controlled commutativity.
+- Enforces orthogonality only where needed while keeping regular check-matrix structure.
+- Enables large girth and avoids the usual distance upper bounds seen in more constrained designs.
+- The included parameter file corresponds to the paper's example: a girth-8, (3,12)-regular
+  [[9216,4612, <=48]] quantum LDPC code.
+
+Decoder overview:
+- Belief-propagation (BP) decoding with low-complexity post-processing.
+- This implementation provides ETS-based and flip-based post-processing, and can be disabled
+  with `--no-pp`.
+
 This repository includes:
 - `jointbp_ets.cpp` source
 - Example code parameters and ETS files under `H_P768_J3_L12_dmax3_nc0-3_1-2_seed11579811919164041`
@@ -64,12 +81,6 @@ Run command:
 Output excerpt (startup only; progress and summary omitted):
 
 ```text
-JJJJJ  OOO  III  N   N TTTTT BBBB  PPPP      EEEE TTTTT SSSS
-  J   O   O  I   NN  N   T   B   B P   P     E      T  S
-  J   O   O  I   N N N   T   BBBB  PPPP      EEEE   T   SSS
-J J   O   O  I   N  NN   T   B   B P         E      T     S
-JJJ   OOO  III  N   N   T   BBBB  P         EEEE   T  SSSS
-
 AI Report: JointBP ETS
 Tips for getting started:
 1. Use --help to see all options.
