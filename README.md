@@ -4,8 +4,19 @@ C++ implementation of a joint BP decoder with ETS/flip post-processing.
 
 This repository includes:
 - `jointbp_ets.cpp` source
-- `jointbp_ets` prebuilt binary (macOS arm64)
 - Example code parameters and ETS files under `H_P768_J3_L12_dmax3_nc0-3_1-2_seed11579811919164041`
+
+## Install and run (git)
+
+```sh
+git clone https://github.com/kasaikenta/joint_BP_plus_PP.git
+cd joint_BP_plus_PP
+c++ -O2 -std=c++17 -o jointbp_ets jointbp_ets.cpp
+./jointbp_ets \
+  --params H_P768_J3_L12_dmax3_nc0-3_1-2_seed11579811919164041.txt \
+  --simulate --p 0.04000000 --trials 1000000 --max-iter 1000 \
+  --flip-hist 5 --damping 0.000000 --report-every 20
+```
 
 ## Build
 
